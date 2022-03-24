@@ -7,11 +7,11 @@ def to_my_format(date):
     return date.isoformat()[5:]
 
 def from_my_format(date):
-    return "2021-"+date
+    return "2022-"+date
 
 def isocalendar_to_my_format(week, weekday):
     try:
-        d = datetime.date.fromisocalendar(2021, week+1, weekday+1)
+        d = datetime.date.fromisocalendar(2022, week+1, weekday+1)
         return d.strftime("%m-%d")
     except:
         return "*****"
@@ -37,7 +37,7 @@ def load_tasksByDate():
             r,g,b = map(ord, task["name"][:3].lower())
             r,g,b = normalize(r,g,b)
             task["color"] = "rgb({r},{g},{b})".format(r=r, g=g, b=b)
-        d = datetime.date.fromisoformat("2021-"+task["date"])
+        d = datetime.date.fromisoformat("2022-"+task["date"]) # TODO
         _, r,c = d.isocalendar()
         c -= 1
         r -= 1
@@ -45,7 +45,7 @@ def load_tasksByDate():
     return tasksByDate
 
 def load_model():
-    return load_tasksByDate()[37:]
+    return load_tasksByDate()[10:]
 
 def weekdays():
     return ["H","K","Sz","Cs","P","Szo","V"]
